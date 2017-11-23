@@ -152,17 +152,26 @@
                         default:
                             if(line.inputType == 'hidden'){
                                html = $('<'+line.tag+' name="'+line.name+'" />');
+                                
+                                if('id' in line) $(html).attr('id',line.id);
+                                if('classes' in line) for(var theClass in line.classes) $(html).addClass(theClass);
+
+                                if('placeholder' in line) $(html).attr('placeholder',line.placeholder);
+                                if('inputType' in line) $(html).attr('type',line.inputType);
+                                if('value' in line) $(html).val(line.value);
                             }
                             else{
                                 html = $('<p><label for="'+line.name+'">'+line.label+'</label><'+line.tag+' name="'+line.name+'" /></p>');
+                                
+                                if('id' in line) $(line.tag,html).attr('id',line.id);
+                                if('classes' in line) for(var theClass in line.classes) $(line.tag,html).addClass(theClass);
+
+                                if('placeholder' in line) $(line.tag,html).attr('placeholder',line.placeholder);
+                                if('inputType' in line) $(line.tag,html).attr('type',line.inputType);
+                                if('value' in line) $(line.tag,html).val(line.value);
                             }
                             
-                            if('id' in line) $(line.tag,html).attr('id',line.id);
-                            if('classes' in line) for(var theClass in line.classes) $(line.tag,html).addClass(theClass);
-
-                            if('placeholder' in line) $(line.tag,html).attr('placeholder',line.placeholder);
-                            if('inputType' in line) $(line.tag,html).attr('type',line.inputType);
-                            if('value' in line) $(line.tag,html).val(line.value);
+                            
                         	
                     }
                 }
