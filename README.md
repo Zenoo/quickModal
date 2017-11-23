@@ -86,9 +86,9 @@ $('#yourModalTrigger').on('click',function(){
           ]
       }
   ],
-  afterOpen: function(none, modal) {}, // Callback triggered after the modal opens. second parameter is the modal NODE.
-  beforeClose: function(none, modal) {}, // Callback triggered right before the modal closes. second parameter is the modal NODE.
-  onSubmit: function(none, form) {} // Callback triggered when the form is submitted. second parameter is the form NODE.
+  afterOpen: function(modal) {}, // Callback triggered after the modal opens. Parameter is the modal NODE.
+  beforeClose: function(modal) {}, // Callback triggered right before the modal closes. Parameter is the modal NODE.
+  onSubmit: function(form) {} // Callback triggered when the form is submitted. Parameter is the form NODE.
 }
 ```
 
@@ -152,13 +152,13 @@ $('#yourModalTrigger').on('click',function(){
                       ]
                   }
               ],
-              afterOpen: function(none, modal) {
+              afterOpen: function(modal) {
                 alert('A modal opened.');
               },
-              beforeClose: function(none, modal) {
+              beforeClose: function(modal) {
                 alert('Your closed the modal.');
               },
-              onSubmit: function(none, form) {
+              onSubmit: function(form) {
                 alert('You submitted the form.');
               }
     });

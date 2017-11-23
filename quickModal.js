@@ -77,9 +77,9 @@
                         ]
                     }
                 ],
-                afterOpen: function(none, modal) {},
-                beforeClose: function(none, modal) {},
-                onSubmit: function(none, form) {}
+                afterOpen: function(modal) {},
+                beforeClose: function(modal) {},
+                onSubmit: function(form) {}
             };
 
             var settings = $.extend({}, this.defaultOptions, options);
