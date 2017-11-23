@@ -1,5 +1,5 @@
 {
-  "name": "quickModal",
+  "name": "quick-modal",
   "title": "Quick Modal Generator",
   "description": "Generate a custom modal quickly",
   "keywords": [
@@ -7,7 +7,7 @@
     "modal",
     "generator"
   ],
-  "version": "1.1.0",
+  "version": "1.2.0",
   "author": {
     "name": "Zenoo",
     "url": "https://github.com/Zenoo"
