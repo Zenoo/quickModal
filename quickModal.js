@@ -138,7 +138,7 @@
                             if('classes' in line) for(var theClass in line.classes) $(line.tag,html).addClass(theClass);
                             
                         	$.each(line.options,function(k,option){
-                            	$(line.tag,html).append('<option value="'+option.value+' '+(option.selected ? 'selected' : '')+'">'+option.text+'</option>');
+                            	$(line.tag,html).append('<option value="'+option.value+'" '+(option.selected ? 'selected' : '')+'>'+option.text+'</option>');
                             });
                         	break;
                         case 'textarea':
