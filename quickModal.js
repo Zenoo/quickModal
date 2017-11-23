@@ -133,7 +133,13 @@
                 }else if(line.type == 'form'){
                     switch(line.tag){
                     	case 'select':
-                        	html = $('<p><label for="'+line.name+'">'+line.label+'</label><'+line.tag+' name="'+line.name+'"></'+line.tag+'></p>');
+                        	if('label' in line){
+                                html = $('<p><label for="'+line.name+'">'+line.label+'</label><'+line.tag+' name="'+line.name+'"></'+line.tag+'></p>');
+                            }
+                            else{
+                                html = $('<p><'+line.tag+' name="'+line.name+'"></'+line.tag+'></p>');
+                            }
+                            
                             if('id' in line) $(line.tag,html).attr('id',line.id);
                             if('classes' in line) for(var theClass in line.classes) $(line.tag,html).addClass(theClass);
                             
@@ -142,7 +148,13 @@
                             });
                         	break;
                         case 'textarea':
-                        	html = $('<p><label for="'+line.name+'">'+line.label+'</label><'+line.tag+' name="'+line.name+'"></'+line.tag+'></p>');
+                            if('label' in line){
+                                html = $('<p><label for="'+line.name+'">'+line.label+'</label><'+line.tag+' name="'+line.name+'"></'+line.tag+'></p>');
+                            }
+                            else{
+                                html = $('<p><'+line.tag+' name="'+line.name+'"></'+line.tag+'></p>');
+                            }
+                            
                             if('id' in line) $(line.tag,html).attr('id',line.id);
                             if('classes' in line) for(var theClass in line.classes) $(line.tag,html).addClass(theClass);
                             
@@ -161,7 +173,12 @@
                                 if('value' in line) $(html).val(line.value);
                             }
                             else{
-                                html = $('<p><label for="'+line.name+'">'+line.label+'</label><'+line.tag+' name="'+line.name+'" /></p>');
+                                if('label' in line){
+                                    html = $('<p><label for="'+line.name+'">'+line.label+'</label><'+line.tag+' name="'+line.name+'" /></p>');
+                                }
+                                else{
+                                    html = $('<p><'+line.tag+' name="'+line.name+'" /></p>');
+                                }
                                 
                                 if('id' in line) $(line.tag,html).attr('id',line.id);
                                 if('classes' in line) for(var theClass in line.classes) $(line.tag,html).addClass(theClass);
