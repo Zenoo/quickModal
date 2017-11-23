@@ -150,7 +150,7 @@
                             if('value' in line) $(line.tag,html).val(line.value);
                         	break;
                         default:
-                            if(lin.inputType == 'hidden'){
+                            if(line.inputType == 'hidden'){
                                html = $('<'+line.tag+' name="'+line.name+'" />');
                             }
                             else{
