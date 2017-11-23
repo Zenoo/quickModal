@@ -98,6 +98,8 @@ modal.destroy(); // Destroy your modal instance.
 ```
 
 * **Example**
+
+See this [JSFiddle](https://jsfiddle.net/Zenoo0/w4p57wmh/) for a working example
 ```
 var modal;
 $('#yourModalTrigger').on('click',function(){
@@ -135,7 +137,7 @@ $('#yourModalTrigger').on('click',function(){
                       ],
                       options: [
                         {value: 'val', text: 'You might choose me ?', selected: false},
-                          {value: 'val2', text: 'I'm here by default !', selected: true}
+                          {value: 'val2', text: 'I\'m here by default !', selected: true}
                       ]
                   }
               ],
