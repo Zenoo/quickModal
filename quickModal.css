@@ -35,8 +35,8 @@
   transition: all .5s;
 }
 .quick-modal.active {
-  top: 50%;
-  transform: translateY(-50%);
+  top: 100px;
+  transform: translateY(0);
   opacity: 1;
 }
 .quick-modal.done {
