@@ -143,7 +143,7 @@ $('#yourModalTrigger').on('click',function(){
               ],
               footer: [
                 {
-                      text: 'I'm a link too !',
+                      text: 'I\'m a link too !',
                       href: '#',
                       id: 'myLink',
                       classes: [
