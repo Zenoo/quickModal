@@ -199,7 +199,7 @@
             $.each(settings.footer,function(k,link){
             	var li = $('<li><a href="'+link.href+'">'+link.text+'</a></li>');
                 if('id' in link) li.attr('id',link.id);
-                if('classes' in link) for(var k in link.classes) li.addClass(line.classes[k]);
+                if('classes' in link) for(var k in link.classes) li.addClass(link.classes[k]);
                 
             	$('footer ul li a.quick-modal-generated-btn', modal).parent().before(li);
             });
