@@ -102,7 +102,7 @@
             
             var modal = $(`
             	<section id="quick-modal-`+this.quickModalId+`" class="quick-modal">
-                	`+(settings.isForm ? '<form '+('id' in settings.form ? settings.form.id : '')+' action="'+settings.form.action+'" method="'+settings.form.method+'">' : '')+`
+                	`+(settings.isForm ? '<form '+('id' in settings.form ? settings.form.id : '')+' action="'+(settings.form.action != undefined ? settings.form.action : '#')+'" method="'+(settings.form.method != undefined ? settings.form.method : 'POST')+'">' : '')+`
                 	<header>
                     	`+settings.header+`
                         <aside><i class="fa fa-close quick-modal-close" aria-hidden="true"></i></aside>
@@ -113,7 +113,7 @@
                     <footer>
                     	<ul>
                         	`+(settings.isForm ? 
-                            	'<li><input type="submit" class="quick-modal-generated-btn quick-modal-submit" value="'+settings.form.submit+'" /></li>' : 
+                            	'<li><input type="submit" class="quick-modal-generated-btn quick-modal-submit" value="'+(settings.form.submit != undefined ? settings.form.submit : 'OK')+'" /></li>' : 
                                 '<li><a class="quick-modal-generated-btn quick-modal-close" href="">'+settings.closeText+'</a></li>'
                             )+`
                         </ul>
@@ -129,7 +129,7 @@
                     html = $('<'+line.tag+'>'+line.text+'</'+line.tag+'>');
                     
                     if('id' in line) html.attr('id',line.id);
-                    if('classes' in line) for(var theClass in line.classes) html.addClass(theClass);
+                    if('classes' in line) for(var k in line.classes) html.addClass(line.classes[k]);
                 }else if(line.type == 'form'){
                     switch(line.tag){
                     	case 'select':
@@ -141,7 +141,7 @@
                             }
                             
                             if('id' in line) $(line.tag,html).attr('id',line.id);
-                            if('classes' in line) for(var theClass in line.classes) $(line.tag,html).addClass(theClass);
+                            if('classes' in line) for(var k in line.classes) $(line.tag,html).addClass(line.classes[k]);
                             
                         	$.each(line.options,function(k,option){
                             	$(line.tag,html).append('<option value="'+option.value+'" '+(option.selected ? 'selected' : '')+'>'+option.text+'</option>');
@@ -156,7 +156,7 @@
                             }
                             
                             if('id' in line) $(line.tag,html).attr('id',line.id);
-                            if('classes' in line) for(var theClass in line.classes) $(line.tag,html).addClass(theClass);
+                            if('classes' in line) for(var k in line.classes) $(line.tag,html).addClass(line.classes[k]);
                             
                             if('placeholder' in line) $(line.tag,html).attr('placeholder',line.placeholder);
                             if('value' in line) $(line.tag,html).val(line.value);
@@ -181,7 +181,7 @@
                                 }
                                 
                                 if('id' in line) $(line.tag,html).attr('id',line.id);
-                                if('classes' in line) for(var theClass in line.classes) $(line.tag,html).addClass(theClass);
+                                if('classes' in line) for(var k in line.classes) $(line.tag,html).addClass(line.classes[k]);
 
                                 if('placeholder' in line) $(line.tag,html).attr('placeholder',line.placeholder);
                                 if('inputType' in line) $(line.tag,html).attr('type',line.inputType);
@@ -199,7 +199,7 @@
             $.each(settings.footer,function(k,link){
             	var li = $('<li><a href="'+link.href+'">'+link.text+'</a></li>');
                 if('id' in link) li.attr('id',link.id);
-                if('classes' in link) for(var theClass in link.classes) li.addClass(theClass);
+                if('classes' in link) for(var k in link.classes) li.addClass(line.classes[k]);
                 
             	$('footer ul li a.quick-modal-generated-btn', modal).parent().before(li);
             });
