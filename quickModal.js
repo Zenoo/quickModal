@@ -158,10 +158,12 @@
                             if('id' in line) $(line.tag,html).attr('id',line.id);
                             if('classes' in line) for(var k in line.classes) $(line.tag,html).addClass(line.classes[k]);
                             
-                            var attributesToAdd = '';
-                            if('attributes' in line) for(var k in line.attributes) attributesToAdd +=k+'="'+line.attributes[k]+'"';
+                            if('attributes' in line) for(var k in line.attributes) $(line.tag,html).attr(k,line.attributes[k]);
                             
                         	$.each(line.options,function(k,option){
+                                var attributesToAdd = '';
+                            if('attributes' in option) for(var k in option.attributes) attributesToAdd +=k+'="'+option.attributes[k]+'"';
+                                
                             	$(line.tag,html).append('<option '+attributesToAdd+' value="'+option.value+'" '+(option.selected ? 'selected' : '')+'>'+option.text+'</option>');
                             });
                         	break;
