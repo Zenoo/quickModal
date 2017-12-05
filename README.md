@@ -50,7 +50,7 @@ $('#yourModalTrigger').on('click',function(){
           ],
           attributes: { //Your line additionnal attributes
             'data-modal': 'true'
-          },
+          }
       },
       {
         type: 'form', // Possible values ["text","form"] If set to 'form', create a new HTML Node with a label and your tag.
