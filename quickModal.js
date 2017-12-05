@@ -6,6 +6,9 @@
                 isForm: true,
                 closeText: 'Close',
                 classes: [],
+                attributes: {
+                    'data-modal': 'true'
+                },
                 form: {
                 	action: 'path/to/your/form',
                     method: 'POST',
@@ -124,6 +127,8 @@
             `);
             
             if('classes' in settings) for(var k in settings.classes) modal.addClass(settings.classes[k]);
+            
+            if('attributes' in settings) for(var k in settings.attributes) modal.attr(k,settings.attributes[k]);
             
             $.each(settings.body,function(k,line){
             	var html;

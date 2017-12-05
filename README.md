@@ -28,6 +28,9 @@ $('#yourModalTrigger').on('click',function(){
   isForm: true, // Your modal contains a form
   closeText: 'Close', // Close button text
   classes: [], //Your modal classes (String array)
+  attributes: { //Your modal additional attributes (attribute name : attribute value)
+    'data-modal': 'true'
+  },
   form: { // If isForm is set to true, this object will define your form properties
       action: 'path/to/your/form', // Form ACTION attribute
       method: 'POST', // Form METHOD attribute
