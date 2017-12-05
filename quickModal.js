@@ -25,7 +25,8 @@
                         classes: [
                         	'class1',
                             'class2'
-                        ]
+                        ],
+                        attributes: {}
                     },
                     {
                     	type: 'form',
@@ -39,7 +40,8 @@
                         classes: [
                         	'class1',
                             'class2'
-                        ]
+                        ],
+                        attributes: {}
                     },
                     {
                     	type: 'form',
@@ -52,7 +54,10 @@
                         classes: [
                         	'class1',
                             'class2'
-                        ]
+                        ],
+                        attributes: {
+                            'data-modal': 'true'
+                        },
                     },
                     {
                     	type: 'form',
@@ -67,7 +72,8 @@
                         options: [
                         	{value: 'val', text: 'Option 1', selected: false},
                             {value: 'val2', text: 'Option 2', selected: true}
-                        ]
+                        ],
+                        attributes: {}
                     }
                 ],
                 footer: [
@@ -137,6 +143,7 @@
                     html = $('<'+line.tag+'>'+line.text+'</'+line.tag+'>');
                     
                     if('id' in line) html.attr('id',line.id);
+                    if('attributes' in line) for(var k in line.attributes) html.attr(k,line.attributes[k]);
                     if('classes' in line) for(var k in line.classes) html.addClass(line.classes[k]);
                 }else if(line.type == 'form'){
                     switch(line.tag){
@@ -151,8 +158,11 @@
                             if('id' in line) $(line.tag,html).attr('id',line.id);
                             if('classes' in line) for(var k in line.classes) $(line.tag,html).addClass(line.classes[k]);
                             
+                            var attributesToAdd = '';
+                            if('attributes' in line) for(var k in line.attributes) attributesToAdd +=k+'="'+line.attributes[k]+'"';
+                            
                         	$.each(line.options,function(k,option){
-                            	$(line.tag,html).append('<option value="'+option.value+'" '+(option.selected ? 'selected' : '')+'>'+option.text+'</option>');
+                            	$(line.tag,html).append('<option '+attributesToAdd+' value="'+option.value+'" '+(option.selected ? 'selected' : '')+'>'+option.text+'</option>');
                             });
                         	break;
                         case 'textarea':
@@ -166,6 +176,8 @@
                             if('id' in line) $(line.tag,html).attr('id',line.id);
                             if('classes' in line) for(var k in line.classes) $(line.tag,html).addClass(line.classes[k]);
                             
+                            if('attributes' in line) for(var k in line.attributes) $(line.tag,html).attr(k,line.attributes[k]);
+                            
                             if('placeholder' in line) $(line.tag,html).attr('placeholder',line.placeholder);
                             if('value' in line) $(line.tag,html).val(line.value);
                         	break;
@@ -175,6 +187,8 @@
                                 
                                 if('id' in line) $(html).attr('id',line.id);
                                 if('classes' in line) for(var theClass in line.classes) $(html).addClass(theClass);
+                                
+                                if('attributes' in line) for(var k in line.attributes) html.attr(k,line.attributes[k]);
 
                                 if('placeholder' in line) $(html).attr('placeholder',line.placeholder);
                                 if('inputType' in line) $(html).attr('type',line.inputType);
@@ -190,6 +204,8 @@
                                 
                                 if('id' in line) $(line.tag,html).attr('id',line.id);
                                 if('classes' in line) for(var k in line.classes) $(line.tag,html).addClass(line.classes[k]);
+                                
+                                if('attributes' in line) for(var k in line.attributes) $(line.tag,html).attr(k,line.attributes[k]);
 
                                 if('placeholder' in line) $(line.tag,html).attr('placeholder',line.placeholder);
                                 if('inputType' in line) $(line.tag,html).attr('type',line.inputType);

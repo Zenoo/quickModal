@@ -47,7 +47,10 @@ $('#yourModalTrigger').on('click',function(){
           classes: [ // Your line classes
               'class1',
               'class2'
-          ]
+          ],
+          attributes: { //Your line additionnal attributes
+            'data-modal': 'true'
+          },
       },
       {
         type: 'form', // Possible values ["text","form"] If set to 'form', create a new HTML Node with a label and your tag.
@@ -74,8 +77,19 @@ $('#yourModalTrigger').on('click',function(){
               'class2'
           ],
           options: [ // If tag == 'select', contains your select options
-            {value: 'val', text: 'Option 1', selected: false},
-              {value: 'val2', text: 'Option 2', selected: true}
+            {
+              value: 'val', 
+              text: 'Option 1', 
+              selected: false,
+              attributes: { //Add attributes to your options
+                'data-modal': 'true'
+              }
+            },
+            {
+              value: 'val2', 
+              text: 'Option 2', 
+              selected: true
+            },
           ]
       }
   ],
