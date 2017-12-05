@@ -5,6 +5,7 @@
                 darkenBackground: true,
                 isForm: true,
                 closeText: 'Close',
+                classes: [],
                 form: {
                 	action: 'path/to/your/form',
                     method: 'POST',
@@ -121,6 +122,8 @@
                     `+(settings.isForm ? '</form>' : '')+`
                 </section>
             `);
+            
+            if('classes' in settings) for(var k in settings.classes) modal.addClass(settings.classes[k]);
             
             $.each(settings.body,function(k,line){
             	var html;
