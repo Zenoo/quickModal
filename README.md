@@ -27,6 +27,7 @@ $('#yourModalTrigger').on('click',function(){
   darkenBackground: true, // Darken your page background when the modal is active
   isForm: true, // Your modal contains a form
   closeText: 'Close', // Close button text
+  classes: [], //Your modal classes (String array)
   form: { // If isForm is set to true, this object will define your form properties
       action: 'path/to/your/form', // Form ACTION attribute
       method: 'POST', // Form METHOD attribute
