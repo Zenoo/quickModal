@@ -112,7 +112,7 @@
             
             var modal = $(`
             	<section id="quick-modal-`+this.quickModalId+`" class="quick-modal">
-                	`+(settings.isForm ? '<form '+('id' in settings.form ? settings.form.id : '')+' action="'+(settings.form.action != undefined ? settings.form.action : '#')+'" method="'+(settings.form.method != undefined ? settings.form.method : 'POST')+'">' : '')+`
+                	`+(settings.isForm ? '<form '+('id' in settings.form ? 'id="'+settings.form.id+'"' : '')+' action="'+(settings.form.action != undefined ? settings.form.action : '#')+'" method="'+(settings.form.method != undefined ? settings.form.method : 'POST')+'">' : '')+`
                 	<header>
                     	`+settings.header+`
                         <aside><i class="fa fa-close quick-modal-close" aria-hidden="true"></i></aside>
