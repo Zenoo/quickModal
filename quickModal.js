@@ -238,7 +238,8 @@
             
             settings.afterOpen.call(undefined,modal);
             
-            $(document).on('click','#quick-modal-hider-'+this.quickModalId+',#quick-modal-'+this.quickModalId+' .quick-modal-close',function(){
+            $(document).on('click','#quick-modal-hider-'+this.quickModalId+',#quick-modal-'+this.quickModalId+' .quick-modal-close',function(e){
+                e.preventDefault();
             	settings.beforeClose.call(undefined,$('#quick-modal-'+that.quickModalId));
                 $('#quick-modal-'+that.quickModalId+',#quick-modal-hider-'+that.quickModalId).removeClass('active').addClass('done');
                 
