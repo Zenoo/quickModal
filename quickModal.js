@@ -245,6 +245,7 @@
                 
                 setTimeout(function(){
                 	$('#quick-modal-'+that.quickModalId+',#quick-modal-hider-'+that.quickModalId).remove();
+                    that.destroy();
                 },2000);
             });
             
