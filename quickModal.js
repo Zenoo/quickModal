@@ -104,6 +104,7 @@
             this.destroy = function(){
             	$('#quick-modal-'+that.quickModalId+' .quick-modal-close').trigger('click');
                 $(document).off('click','#quick-modal-hider-'+that.quickModalId+',#quick-modal-'+that.quickModalId+' .quick-modal-close');
+                if(settings.isForm) $(document).off('submit','#quick-modal-'+that.quickModalId+' form');
             };
             
             if(settings.darkenBackground){
@@ -248,6 +249,12 @@
                     that.destroy();
                 },2000);
             });
+            
+            if(settings.isForm){
+                $(document).on('submit','#quick-modal-'+that.quickModalId+' form',function(e){
+                    settings.onSubmit.call(undefined,e,$(this));
+                });
+            }
             
             return this;
         }
