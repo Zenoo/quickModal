@@ -130,3 +130,10 @@
 .quick-modal footer ul li .quick-modal-generated-btn.quick-modal-close:hover {
   background-color: #7b2320;
 }
+
+@media screen and (max-width: 499px){
+	.quick-modal{
+		width: auto;
+		margin: 0 10px;
+	}
+}

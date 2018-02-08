@@ -228,7 +228,8 @@
                 if('id' in link) li.attr('id',link.id);
                 if('classes' in link) for(var k in link.classes) li.find('a').addClass(link.classes[k]);
                 
-            	$('footer ul li a.quick-modal-generated-btn.quick-modal-close', modal).parent().before(li);
+                if($('footer ul li a.quick-modal-generated-btn.quick-modal-close', modal).length) $('footer ul li a.quick-modal-generated-btn.quick-modal-close', modal).parent().before(li);
+                else $('footer ul li a.quick-modal-generated-btn.quick-modal-submit', modal).parent().before(li);
             });
             
             $('body').append(modal);
