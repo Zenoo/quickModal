@@ -116,7 +116,7 @@
                 	`+(settings.isForm ? '<form '+('id' in settings.form ? 'id="'+settings.form.id+'"' : '')+' action="'+(settings.form.action != undefined ? settings.form.action : '#')+'" method="'+(settings.form.method != undefined ? settings.form.method : 'POST')+'">' : '')+`
                 	<header>
                     	`+settings.header+`
-                        <aside><i class="fa fa-close quick-modal-close" aria-hidden="true"></i></aside>
+                        <aside><i class="fa fa-close fa-times quick-modal-close" aria-hidden="true"></i></aside>
                     </header>
                     <section class="quick-modal-main">
                     
