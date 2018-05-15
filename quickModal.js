@@ -211,7 +211,10 @@
                                 if('attributes' in line) for(var k in line.attributes) $(line.tag,html).attr(k,line.attributes[k]);
 
                                 if('placeholder' in line) $(line.tag,html).attr('placeholder',line.placeholder);
-                                if('inputType' in line) $(line.tag,html).attr('type',line.inputType);
+                                if('inputType' in line){
+                                    $(line.tag,html).attr('type',line.inputType);
+                                    $(line.tag,html).addClass('type-'+line.inputType);
+                                }
                                 if('value' in line) $(line.tag,html).val(line.value);
                             }
                             
