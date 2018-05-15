@@ -199,7 +199,11 @@
                             }
                             else{
                                 if('label' in line){
-                                    html = $('<p><label for="'+line.name+'" '+('inputType' in line ? 'class="type-'+line.inputType+'"' : '')+'>'+line.label+'</label><'+line.tag+' name="'+line.name+'" /></p>');
+                                    if('inputType' in line && line.inputType == 'checkbox'){
+                                        html = $('<p><'+line.tag+' name="'+line.name+'" /><label for="'+line.name+'" '+('inputType' in line ? 'class="type-'+line.inputType+'"' : '')+'>'+line.label+'</label></p>');
+                                    }else{
+                                        html = $('<p><label for="'+line.name+'" '+('inputType' in line ? 'class="type-'+line.inputType+'"' : '')+'>'+line.label+'</label><'+line.tag+' name="'+line.name+'" /></p>');
+                                    }
                                 }
                                 else{
                                     html = $('<p><'+line.tag+' name="'+line.name+'" /></p>');
