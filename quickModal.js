@@ -199,7 +199,7 @@
                             }
                             else{
                                 if('label' in line){
-                                    html = $('<p><label for="'+line.name+'">'+line.label+'</label><'+line.tag+' name="'+line.name+'" /></p>');
+                                    html = $('<p><label for="'+line.name+'" '+('inputType' in line ? 'class="type-'+line.inputType+'"')+'>'+line.label+'</label><'+line.tag+' name="'+line.name+'" /></p>');
                                 }
                                 else{
                                     html = $('<p><'+line.tag+' name="'+line.name+'" /></p>');
@@ -211,10 +211,7 @@
                                 if('attributes' in line) for(var k in line.attributes) $(line.tag,html).attr(k,line.attributes[k]);
 
                                 if('placeholder' in line) $(line.tag,html).attr('placeholder',line.placeholder);
-                                if('inputType' in line){
-                                    $(line.tag,html).attr('type',line.inputType);
-                                    $(line.tag,html).addClass('type-'+line.inputType);
-                                }
+                                if('inputType' in line) $(line.tag,html).attr('type',line.inputType);
                                 if('value' in line) $(line.tag,html).val(line.value);
                             }
                             
