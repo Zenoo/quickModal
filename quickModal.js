@@ -199,7 +199,7 @@
                             }
                             else{
                                 if('label' in line){
-                                    html = $('<p><label for="'+line.name+'" '+('inputType' in line ? 'class="type-'+line.inputType+'"')+'>'+line.label+'</label><'+line.tag+' name="'+line.name+'" /></p>');
+                                    html = $('<p><label for="'+line.name+'" '+('inputType' in line ? 'class="type-'+line.inputType+'"' : '')+'>'+line.label+'</label><'+line.tag+' name="'+line.name+'" /></p>');
                                 }
                                 else{
                                     html = $('<p><'+line.tag+' name="'+line.name+'" /></p>');
