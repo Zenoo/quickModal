@@ -124,7 +124,7 @@
                     <footer>
                     	<ul>
                         	`+(settings.isForm ? 
-                            	'<li><input type="submit" class="quick-modal-generated-btn quick-modal-submit" value="'+(settings.form.submit != undefined ? settings.form.submit : 'OK')+'" /></li>' : 
+                            	'<li><input type="submit" class="quick-modal-generated-btn quick-modal-submit" value="'+(settings.form.submit != undefined ? settings.form.submit : 'OK')+'" /></li><li><a class="quick-modal-generated-btn quick-modal-close" href="">'+settings.closeText+'</a></li>' : 
                                 '<li><a class="quick-modal-generated-btn quick-modal-close" href="">'+settings.closeText+'</a></li>'
                             )+`
                         </ul>
