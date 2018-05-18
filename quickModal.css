@@ -16,7 +16,7 @@
   z-index: -1;
 }
 .quick-modal {
-  position: absolute;
+  position: fixed;
   left: 0;
   right: 0;
   margin: 0 auto;
