@@ -4,6 +4,8 @@
   "description": "Generate a custom modal quickly",
   "keywords": [
     "jquery-plugins",
+    "jquery-plugin",
+    "ecosystem:jquery",
     "modal",
     "generator"
   ],
