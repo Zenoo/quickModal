@@ -231,6 +231,7 @@
             	var li = $('<li><a class="quick-modal-generated-btn" href="'+link.href+'">'+link.text+'</a></li>');
                 if('id' in link) li.attr('id',link.id);
                 if('classes' in link) for(var k in link.classes) li.find('a').addClass(link.classes[k]);
+                if('attributes' in link) for(let k in link.attributes) li.attr(k,link.attributes[k]);
                 
                 if($('footer ul li a.quick-modal-generated-btn.quick-modal-close', modal).length) $('footer ul li a.quick-modal-generated-btn.quick-modal-close', modal).parent().before(li);
                 else $('footer ul li input.quick-modal-generated-btn.quick-modal-submit', modal).parent().before(li);
