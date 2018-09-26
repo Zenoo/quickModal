@@ -133,9 +133,9 @@
                 </section>
             `);
             
-            if('classes' in settings) for(var k in settings.classes) modal.addClass(settings.classes[k]);
+            if('classes' in settings) for(let clazz of settings.classes) modal.addClass(clazz);
             
-            if('attributes' in settings) for(var k in settings.attributes) modal.attr(k,settings.attributes[k]);
+            if('attributes' in settings) for(let k in settings.attributes) if(settings.attributes.hasOwnProperty(k)) modal.attr(k,settings.attributes[k]);
             
             $.each(settings.body,function(k,line){
             	var html;
@@ -144,8 +144,8 @@
                     html = $('<'+line.tag+'>'+line.text+'</'+line.tag+'>');
                     
                     if('id' in line) html.attr('id',line.id);
-                    if('attributes' in line) for(var k in line.attributes) html.attr(k,line.attributes[k]);
-                    if('classes' in line) for(var k in line.classes) html.addClass(line.classes[k]);
+                    if('attributes' in line) for(let k in line.attributes) if(line.attributes.hasOwnProperty(k)) html.attr(k,line.attributes[k]);
+                    if('classes' in line) for(let clazz of line.classes) html.addClass(clazz);
                 }else if(line.type == 'form'){
                     switch(line.tag){
                     	case 'select':
@@ -157,13 +157,13 @@
                             }
                             
                             if('id' in line) $(line.tag,html).attr('id',line.id);
-                            if('classes' in line) for(var k in line.classes) $(line.tag,html).addClass(line.classes[k]);
+                            if('classes' in line) for(let clazz of line.classes) $(line.tag,html).addClass(clazz);
                             
-                            if('attributes' in line) for(var k in line.attributes) $(line.tag,html).attr(k,line.attributes[k]);
+                            if('attributes' in line) for(let k in line.attributes) if(line.attributes.hasOwnProperty(k)) $(line.tag,html).attr(k,line.attributes[k]);
                             
                         	$.each(line.options,function(k,option){
                                 var attributesToAdd = '';
-                            if('attributes' in option) for(var k in option.attributes) attributesToAdd +=k+'="'+option.attributes[k]+'"';
+                            if('attributes' in option) for(let k in option.attributes) if(option.attributes.hasOwnProperty(k)) attributesToAdd +=k+'="'+option.attributes[k]+'"';
                                 
                             	$(line.tag,html).append('<option '+attributesToAdd+' value="'+option.value+'" '+(option.selected ? 'selected' : '')+'>'+option.text+'</option>');
                             });
@@ -177,9 +177,9 @@
                             }
                             
                             if('id' in line) $(line.tag,html).attr('id',line.id);
-                            if('classes' in line) for(var k in line.classes) $(line.tag,html).addClass(line.classes[k]);
+                            if('classes' in line) for(let clazz of line.classes) $(line.tag,html).addClass(clazz);
                             
-                            if('attributes' in line) for(var k in line.attributes) $(line.tag,html).attr(k,line.attributes[k]);
+                            if('attributes' in line) for(let k in line.attributes) if(line.attributes.hasOwnProperty(k)) $(line.tag,html).attr(k,line.attributes[k]);
                             
                             if('placeholder' in line) $(line.tag,html).attr('placeholder',line.placeholder);
                             if('value' in line) $(line.tag,html).val(line.value);
@@ -189,9 +189,9 @@
                                html = $('<'+line.tag+' name="'+line.name+'" />');
                                 
                                 if('id' in line) $(html).attr('id',line.id);
-                                if('classes' in line) for(var theClass in line.classes) $(html).addClass(theClass);
+                                if('classes' in line) for(let clazz of line.classes) $(html).addClass(clazz);
                                 
-                                if('attributes' in line) for(var k in line.attributes) html.attr(k,line.attributes[k]);
+                                if('attributes' in line) for(let k in line.attributes) if(line.attributes.hasOwnProperty(k)) html.attr(k,line.attributes[k]);
 
                                 if('placeholder' in line) $(html).attr('placeholder',line.placeholder);
                                 if('inputType' in line) $(html).attr('type',line.inputType);
@@ -210,9 +210,9 @@
                                 }
                                 
                                 if('id' in line) $(line.tag,html).attr('id',line.id);
-                                if('classes' in line) for(var k in line.classes) $(line.tag,html).addClass(line.classes[k]);
+                                if('classes' in line) for(let clazz of line.classes) $(line.tag,html).addClass(clazz);
                                 
-                                if('attributes' in line) for(var k in line.attributes) $(line.tag,html).attr(k,line.attributes[k]);
+                                if('attributes' in line) for(let k in line.attributes) if(line.attributes.hasOwnProperty(k)) $(line.tag,html).attr(k,line.attributes[k]);
 
                                 if('placeholder' in line) $(line.tag,html).attr('placeholder',line.placeholder);
                                 if('inputType' in line) $(line.tag,html).attr('type',line.inputType);
@@ -230,8 +230,8 @@
             $.each(settings.footer,function(k,link){
             	var li = $('<li><a class="quick-modal-generated-btn" href="'+link.href+'">'+link.text+'</a></li>');
                 if('id' in link) li.attr('id',link.id);
-                if('classes' in link) for(var k in link.classes) li.find('a').addClass(link.classes[k]);
-                if('attributes' in link) for(let k in link.attributes) li.attr(k,link.attributes[k]);
+                if('classes' in link) for(let clazz of link.classes) li.find('a').addClass(clazz);
+                if('attributes' in link) for(let k in link.attributes) if(link.attributes.hasOwnProperty(k)) li.attr(k,link.attributes[k]);
                 
                 if($('footer ul li a.quick-modal-generated-btn.quick-modal-close', modal).length) $('footer ul li a.quick-modal-generated-btn.quick-modal-close', modal).parent().before(li);
                 else $('footer ul li input.quick-modal-generated-btn.quick-modal-submit', modal).parent().before(li);
