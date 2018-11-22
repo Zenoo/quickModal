@@ -1,4 +1,32 @@
-/* exported QuickModal */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: quickModal.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: quickModal.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/* exported QuickModal */
 
 /**
  * QuickModal class used for the QuickModal plugin
@@ -11,7 +39,7 @@ class QuickModal{
      * @param {Boolean} 				[parameters.isForm=false] 			Is the QuickModal a form?
      * @param {String} 					[parameters.closeText=OK] 			Close button text
      * @param {String[]} 				[parameters.classes] 				QuickModal classes
-     * @param {Object<String, String>} 	[parameters.attributes] 			QuickModal attributes
+     * @param {Object&lt;String, String>} 	[parameters.attributes] 			QuickModal attributes
      * @param {String} 					parameters.header 					Header content
      * @param {Object[]} 				parameters.body 					Body content
      * @param {Object[]} 				parameters.footer 					Footer content
@@ -31,11 +59,11 @@ class QuickModal{
 			closeText: 'OK',
 			classes: [],
 			attributes: {},
-			header: '<div>QuickModal</div>',
+			header: '&lt;div>QuickModal&lt;/div>',
 			body: [
 				{
 					type: 'text',
-					text: 'This is a basic QuickModal. See the <a href="https://zenoo.github.io/quickModal/">documentation</a> for more.',
+					text: 'This is a basic QuickModal. See the &lt;a href="https://zenoo.github.io/quickModal/">documentation&lt;/a> for more.',
 					tag: 'p',
 					classes: []
 				}
@@ -50,7 +78,7 @@ class QuickModal{
 		if(typeof parameters == 'string'){
 			this._parameters = {
 				...this._parameters,
-				header: '<div>' + parameters + '</div>',
+				header: '&lt;div>' + parameters + '&lt;/div>',
 				body: [
 					{
 						type: 'text',
@@ -76,7 +104,7 @@ class QuickModal{
 		
 		/**
 		 * QuickModal elements holder
-		 * @type {Object.<String, Element>}
+		 * @type {Object.&lt;String, Element>}
 		 * @private
 		 */
 		this._elements = {
@@ -129,37 +157,37 @@ class QuickModal{
 		// QuickModal base DOM tree
 		this.modal.innerHTML = `
 			${this._parameters.isForm ? `
-				<form 
+				&lt;form 
 					${Reflect.ownKeys(this._parameters.form).includes('id') ? 'id="'+this._parameters.form.id+'"' : ''}
 					action="${Reflect.ownKeys(this._parameters.form).includes('action') ? this._parameters.form.action : '#'}"
 					method="${Reflect.ownKeys(this._parameters.form).includes('method') ? this._parameters.form.method : 'POST'}"
 				>
 			` : ''}
-			<header>
+			&lt;header>
 				${this._parameters.header}
-			</header>
-			<section class="quick-modal-main">
+			&lt;/header>
+			&lt;section class="quick-modal-main">
 
-			</section>
-			<footer>
-				<ul>
+			&lt;/section>
+			&lt;footer>
+				&lt;ul>
 					${this._parameters.isForm ? `
-						<li>
-							<input 
+						&lt;li>
+							&lt;input 
 								type="submit" 
 								class="quick-modal-generated-btn quick-modal-submit" 
 								value="${Reflect.ownKeys(this._parameters.form).includes('submit') ? this._parameters.form.submit : 'OK'}"
 							/>
-						</li>
+						&lt;/li>
 					` : ''}
-					<li>
-						<a class="quick-modal-generated-btn quick-modal-close" href="">
+					&lt;li>
+						&lt;a class="quick-modal-generated-btn quick-modal-close" href="">
 							${this._parameters.closeText}
-						</a>
-					</li>
-				</ul>
-			</footer>
-			${this._parameters.isForm ? '</form>' : ''}
+						&lt;/a>
+					&lt;/li>
+				&lt;/ul>
+			&lt;/footer>
+			${this._parameters.isForm ? '&lt;/form>' : ''}
 		`;
 
 		this._elements.body = this.modal.querySelector('.quick-modal-main');
@@ -192,11 +220,11 @@ class QuickModal{
 				switch (line.tag) {
 					case 'select':
 						this._elements.body.append(this._toNodes(`
-							<p>
+							&lt;p>
 								${lineAttributes.includes('label') ? `
-									<label for="${lineAttributes.includes('id') ? line.id : line.name}">${line.label}</label>
+									&lt;label for="${lineAttributes.includes('id') ? line.id : line.name}">${line.label}&lt;/label>
 								` : ''}
-								<${line.tag} 
+								&lt;${line.tag} 
 									name="${line.tag}" 
 									id="${lineAttributes.includes('id') ? line.id : line.name}"
 									class="${lineAttributes.includes('classes') ? line.classes.join(' ') : ''}"
@@ -206,7 +234,7 @@ class QuickModal{
 									}
 								>
 									${line.options.recude((acc, option) => `
-										<option 
+										&lt;option 
 											${Reflect.ownKeys(option).includes('attributes')
 												? Object.entries(option.attributes).reduce((accu, [attribute, value]) => accu += attribute + '="'+value+'" ', '')
 												: ''
@@ -215,19 +243,19 @@ class QuickModal{
 											${option.selected ? 'selected' : ''}
 										>
 											${option.text}
-										</option>
+										&lt;/option>
 									`, '')}
-								</${line.tag}>
-							</p>
+								&lt;/${line.tag}>
+							&lt;/p>
 						`));
 						break;
 					default:
 						this._elements.body.append(this._toNodes(`
-							${lineAttributes.includes('inputType') && line.inputType == 'hidden' ? '' : '<p>'}
+							${lineAttributes.includes('inputType') &amp;&amp; line.inputType == 'hidden' ? '' : '&lt;p>'}
 								${lineAttributes.includes('label') ? `
-									<label for="${lineAttributes.includes('id') ? line.id : line.name}">${line.label}</label>
+									&lt;label for="${lineAttributes.includes('id') ? line.id : line.name}">${line.label}&lt;/label>
 								` : ''}
-								<${line.tag} 
+								&lt;${line.tag} 
 									${line.tag == 'textarea' ? '' : lineAttributes.includes('inputType') ? 'type="'+line.inputType+'"' : ''}
 									name="${line.tag}" 
 									id="${lineAttributes.includes('id') ? line.id : line.name}"
@@ -240,8 +268,8 @@ class QuickModal{
 									value="${lineAttributes.includes('value') ? line.value : ''}"
 								>
 									
-								</${line.tag}>
-							${lineAttributes.includes('inputType') && line.inputType == 'hidden' ? '' : '</p>'}
+								&lt;/${line.tag}>
+							${lineAttributes.includes('inputType') &amp;&amp; line.inputType == 'hidden' ? '' : '&lt;/p>'}
 						`));
 						break;
 				}
@@ -261,7 +289,7 @@ class QuickModal{
 			const linkAttributes = Reflect.ownKeys(link);
 
 			this._elements.footerLinks.prepend(this._toNodes(`
-				<li
+				&lt;li
 					id="${linkAttributes.includes('id') ? link.id : ''}"
 					class="${linkAttributes.includes('classes') ? link.classes.join(' ') : ''}"
 					${linkAttributes.includes('attributes')
@@ -269,10 +297,10 @@ class QuickModal{
 						: ''
 					}
 				>
-					<a class="quick-modal-generated-btn" href="${link.href}">
+					&lt;a class="quick-modal-generated-btn" href="${link.href}">
 						${link.text}
-					</a>
-				</li>
+					&lt;/a>
+				&lt;/li>
 			`));
 		});
 	}
@@ -411,4 +439,26 @@ class QuickModal{
 			return this;
 		}
     });
-}(jQuery));
+}(jQuery));</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="QuickModal.html">QuickModal</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Thu Nov 22 2018 12:19:49 GMT+0100 (Romance Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
