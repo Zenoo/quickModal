@@ -95,6 +95,7 @@ class QuickModal{
 
 	/**
 	 * Builds the QuickModal in the DOM
+	 * @private
 	 */
 	_build(){
 		this._buildFrame();
@@ -279,6 +280,7 @@ class QuickModal{
 
 	/**
 	 * Attach event listeners for the QuickModal
+	 * @private
 	 */
 	_listen(){
 		// Close action handling
