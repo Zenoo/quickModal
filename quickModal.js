@@ -111,6 +111,8 @@ class QuickModal{
 
 		this._buildBody();
 
+		this._buildFooter();
+
 		document.body.append(this.modal);
 	}
 
@@ -261,7 +263,7 @@ class QuickModal{
 		this._parameters.footer.forEach(link => {
 			const linkAttributes = Reflect.ownKeys(link);
 
-			this._elements.footerLinks.prepend(this._toNodes(`
+			this._elements.footerLinks.prepend(...this._toNodes(`
 				<li
 					id="${linkAttributes.includes('id') ? link.id : ''}"
 					class="${linkAttributes.includes('classes') ? link.classes.join(' ') : ''}"
