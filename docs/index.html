@@ -47,171 +47,113 @@
 <h3>Doc</h3><ul>
 <li><strong>Installation</strong></li>
 </ul>
-<p>Simply import JQuery &amp; quickModal into your HTML.</p>
-<pre class="prettyprint source"><code>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/path/to/quickModal.css&quot;>
-&lt;script src=&quot;https://code.jquery.com/jquery-3.2.1.min.js&quot; integrity=&quot;sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=&quot; crossorigin=&quot;anonymous&quot;>&lt;/script>
-&lt;script src=&quot;your/Path/js/quickModal.js&quot; type=&quot;text/javascript&quot;>&lt;/script>    </code></pre><ul>
+<p>Simply import QuickModal into your HTML.</p>
+<pre class="prettyprint source"><code>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://gitcdn.link/repo/Zenoo/quickModal/master/quickModal.min.css&quot;>
+&lt;script src=&quot;https://gitcdn.link/repo/Zenoo/quickModal/master/quickModal.min.js&quot;>&lt;/script>    </code></pre><ul>
 <li><strong>How to use</strong></li>
 </ul>
-<p>Initialize your modal after any event.</p>
-<pre class="prettyprint source"><code>var modal;
-$('#yourModalTrigger').on('click',function(){
-     modal = $(this).quickModal();
-});</code></pre><ul>
+<p>Initialize your modal:</p>
+<pre class="prettyprint source"><code>// Without jQuery
+const modal = new QuickModal(options);
+
+// With jQuery
+$(document).quickModal(options);</code></pre><ul>
 <li><p><strong>Options</strong></p>
 <pre class="prettyprint source"><code>{
-darkenBackground: true, // Darken your page background when the modal is active
-isForm: true, // Your modal contains a form
-closeText: 'Close', // Close button text
-classes: [], //Your modal classes (String array)
-attributes: { //Your modal additional attributes (attribute name : attribute value)
-  'data-modal': 'true'
-},
-form: { // If isForm is set to true, this object will define your form properties
-    action: 'path/to/your/form', // Form ACTION attribute
-    method: 'POST', // Form METHOD attribute
-    id: 'formId', // Form ID
-    submit: 'OK' // Form Submit text
-},
-header: '&lt;div>Custom HTML&lt;/div>', // Modal header content
-body: [ // Array containing all your modal lines
-  {
-      type: 'text', // Possible values [&quot;text&quot;,&quot;form&quot;] If set to 'text', creates a simple HTML node
-        text: 'I am Text !', // Your line text
-        tag: 'h3', // Your line tag
-        id: 'myId', // Your line id
-        classes: [ // Your line classes
-            'class1',
-            'class2'
-        ],
-        attributes: { //Your line additionnal attributes
-          'data-modal': 'true'
-        }
-    },
-    {
-      type: 'form', // Possible values [&quot;text&quot;,&quot;form&quot;] If set to 'form', create a new HTML Node with a label and your tag.
-        label: 'I am Input !', // Your input label
-        inputType: 'text', // If tag == 'input', set this to set your input TYPE attribute
-        placeholder: 'I am Placeholder !', // If tag == 'input' or 'textarea', set this to set your input PLACEHOLDER attribute
-        name: 'formText', // Your input NAME attribute
-        value: 'currentValue', // Your input VALUE attribute
-        tag: 'input', // Your input tag
-        id: 'myInput', // Your input ID
-        classes: [ // Your input classes
-          'class1',
-            'class2'
-        ]
-    },
-    {
-      type: 'form',
-        label: 'I am Select !',
-        name: 'formSelect',
-        tag: 'select',
-        id: 'mySelect',
-        classes: [
-          'class1',
-            'class2'
-        ],
-        options: [ // If tag == 'select', contains your select options
-          {
-            value: 'val', 
-            text: 'Option 1', 
-            selected: false,
-            attributes: { //Add attributes to your options
+  darkenBackground: true,             // Darken your page background when the modal is active
+  isForm: false,                         // Your modal contains a form
+  closeText: 'OK',                     // Close button text
+  classes: [],                         // Your modal classes (String[])
+  attributes: {                         // Your modal additional attributes (attribute name : attribute value)
+      'data-modal': 'true'
+  },
+  form: {                             // If isForm is set to true, this object will define your form properties
+      action: 'path/to/your/form',     // Form ACTION attribute
+      method: 'POST',                 // Form METHOD attribute
+      id: 'formId',                     // Form ID
+      classes: [],                     // Form classes (String[])
+      submit: 'OK'                     // Form Submit text
+  },
+  header: '&lt;div>Custom HTML&lt;/div>',     // Modal header content
+  body: [                             // Array containing all your modal lines
+      {
+          type: 'text',                 // Possible values [&quot;text&quot;,&quot;form&quot;] If set to 'text', creates a simple HTML node
+          text: 'I am Text !',         // Your line text
+          tag: 'h3',                     // Your line tag
+          id: 'myId',                 // Your line id
+          classes: [                     // Your line classes
+              'class1',
+              'class2'
+          ],
+          attributes: {                 // Your line additionnal attributes
               'data-modal': 'true'
-            }
-          },
-          {
-            value: 'val2', 
-            text: 'Option 2', 
-            selected: true
-          },
-        ]
-    }
-],
-footer: [ // Contains an array of links displayed at the bottom of your modal
-  {
-        text: 'I am Link !', // Your link text
-        href: 'path/to/link', // Your link Href
-        id: 'myLink', // Your link ID
-        classes: [ // Your link classes
-          'class1',
-            'class2'
-        ]
-    }
-],
-afterOpen: function(modal) {}, // Callback triggered after the modal opens. Parameter is the modal NODE.
-beforeClose: function(modal) {}, // Callback triggered right before the modal closes. Parameter is the modal NODE.
-onSubmit: function(event, form) {} // Callback triggered when the form is submitted. Parameter are the event and the form NODE.
+          }
+      },
+      {
+          type: 'form',                 // Possible values [&quot;text&quot;,&quot;form&quot;] If set to 'form', create a new HTML Node with a label and your tag.
+          label: 'I am Input !',         // Your input label
+          inputType: 'text',             // If tag == 'input', set this to set your input TYPE attribute
+          placeholder: 'Placeholder', // If tag == 'input' or 'textarea', set this to set your input PLACEHOLDER attribute
+          name: 'formText',             // Your input NAME attribute
+          value: 'currentValue',         // Your input VALUE attribute
+          tag: 'input',                 // Your input tag
+          id: 'myInput',                 // Your input ID
+          classes: [                     // Your input classes
+              'class1',
+              'class2'
+          ]
+      },
+      {
+          type: 'form',
+          label: 'I am Select !',
+          name: 'formSelect',
+          tag: 'select',
+          id: 'mySelect',
+          classes: [
+              'class1',
+              'class2'
+          ],
+          options: [                     // If tag == 'select', contains your select options
+              {
+                  value: 'val', 
+                  text: 'Option 1', 
+                  selected: false,
+                  attributes: {         //Add attributes to your options
+                      'data-modal': 'true'
+                  }
+              },
+              {
+                  value: 'val2', 
+                  text: 'Option 2', 
+                  selected: true
+              },
+          ]
+      }
+  ],
+  footer: [                             // Contains an array of links displayed at the bottom of your modal
+      {
+          text: 'I am Link !',         // Your link text
+          href: 'path/to/link',         // Your link Href
+          id: 'myLink',                 // Your link ID
+          classes: [                     // Your link classes
+              'class1',
+              'class2'
+          ]
+      }
+  ],
+  afterOpen: function(modal) {},         // Callback triggered after the modal opens. Parameter is the modal NODE.
+  beforeClose: function(modal) {},     // Callback triggered right before the modal closes. Parameter is the modal NODE.
+  onSubmit: function(event, form) {}     // Callback triggered when the form is submitted. Parameter are the event and the form NODE.
 }</code></pre></li>
 <li><p><strong>Methods</strong></p>
-<pre class="prettyprint source"><code>modal.destroy(); // Destroy your modal instance.</code></pre></li>
+<pre class="prettyprint source"><code>modal.open();         // Opens the modal (If previously closed)
+modal.close();         // Closes the modal
+modal.destroy();     // Destroys the modal</code></pre></li>
 <li><p><strong>Example</strong></p>
 </li>
 </ul>
 <p>See this <a href="https://jsfiddle.net/Zenoo0/w4p57wmh/">JSFiddle</a> for a working example</p>
-<pre class="prettyprint source"><code>var modal;
-$('#yourModalTrigger').on('click',function(){
-     modal = $(this).quickModal({
-              darkenBackground: true,
-              isForm: true,
-              closeText: 'Close me !',
-              form: {
-                  action: '#',
-                  method: 'GET',
-                  id: 'formId',
-                  submit: 'Send me !'
-              },
-              header: '&lt;div>Beautiful Header&lt;/div>',
-              body: [
-                {
-                    type: 'text',
-                      text: 'hello there',
-                      tag: 'h3',
-                      id: 'myId',
-                      classes: [
-                          'class1',
-                          'class2'
-                      ]
-                  },
-                  {
-                    type: 'form',
-                      label: 'Choose me !',
-                      name: 'formSelect',
-                      tag: 'select',
-                      id: 'mySelect',
-                      classes: [
-                        'class1',
-                          'class2'
-                      ],
-                      options: [
-                        {value: 'val', text: 'You might choose me ?', selected: false},
-                          {value: 'val2', text: 'I\'m here by default !', selected: true}
-                      ]
-                  }
-              ],
-              footer: [
-                {
-                      text: 'I\'m a link too !',
-                      href: '#',
-                      id: 'myLink',
-                      classes: [
-                          'class1',
-                          'class2'
-                      ]
-                  }
-              ],
-              afterOpen: function(modal) {
-                alert('A modal opened.');
-              },
-              beforeClose: function(modal) {
-                alert('Your closed the modal.');
-              },
-              onSubmit: function(e,form) {
-                alert('You submitted the form.');
-              }
-    });
-});</code></pre><h2>Authors</h2><ul>
+<h2>Authors</h2><ul>
 <li><strong>Zenoo</strong> - <em>Initial work</em> - <a href="http://zenoo.fr">Zenoo.fr</a></li>
 </ul></article>
     </section>
@@ -230,7 +172,7 @@ $('#yourModalTrigger').on('click',function(){
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Thu Nov 22 2018 12:19:49 GMT+0100 (Romance Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Thu Nov 22 2018 12:39:28 GMT+0100 (Romance Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>
