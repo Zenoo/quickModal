@@ -325,8 +325,10 @@ class QuickModal{
 	 * @returns {Promise} A promise resolved once the QuickModal is fully displayed
 	 */
 	open(){
-		this.modal.classList.add('active');
-		if(this._parameters.darkenBackground) this._elements.hider.classList.add('active');
+		setTimeout(() => {
+			this.modal.classList.add('active');
+			if(this._parameters.darkenBackground) this._elements.hider.classList.add('active');
+		}, 20);
 
 		return new Promise(resolve => {
 			setTimeout(() => {
