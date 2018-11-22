@@ -190,7 +190,6 @@ class QuickModal{
 
 				this._elements.body.appendChild(element);
 			}else if(line.type == 'form'){
-				console.log(line);
 				switch (line.tag) {
 					case 'select':
 						this._elements.body.append(...this._toNodes(`
@@ -329,13 +328,13 @@ class QuickModal{
 		setTimeout(() => {
 			this.modal.classList.add('active');
 			if(this._parameters.darkenBackground) this._elements.hider.classList.add('active');
+
+			// Callback afterOpen
+			Reflect.apply(this._parameters.afterOpen, this, [this.modal]);
 		}, 20);
 
 		return new Promise(resolve => {
 			setTimeout(() => {
-				// Callback afterOpen
-				Reflect.apply(this._parameters.afterOpen, this, [this.modal]);
-
 				resolve();
 			}, 500);
 		});
