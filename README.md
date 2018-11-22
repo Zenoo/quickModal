@@ -18,6 +18,9 @@ Initialize your modal:
 // Without jQuery
 const modal = new QuickModal(options);
 
+// Shorthand for a simple title + body
+const modal = new QuickModal('Your title', 'Your message');
+
 // With jQuery
 $(document).quickModal(options);
 ```
