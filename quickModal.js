@@ -140,6 +140,7 @@ class QuickModal{
 			` : ''}
 			<header>
 				${this._parameters.header}
+				<aside>x</aside>
 			</header>
 			<section class="quick-modal-main">
 
