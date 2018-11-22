@@ -190,9 +190,10 @@ class QuickModal{
 
 				this._elements.body.appendChild(element);
 			}else if(line.type == 'form'){
+				console.log(line);
 				switch (line.tag) {
 					case 'select':
-						this._elements.body.append(this._toNodes(`
+						this._elements.body.append(...this._toNodes(`
 							<p>
 								${lineAttributes.includes('label') ? `
 									<label for="${lineAttributes.includes('id') ? line.id : line.name}">${line.label}</label>
@@ -206,7 +207,7 @@ class QuickModal{
 										: ''
 									}
 								>
-									${line.options.recude((acc, option) => `
+									${line.options.reduce((acc, option) => `
 										<option 
 											${Reflect.ownKeys(option).includes('attributes')
 												? Object.entries(option.attributes).reduce((accu, [attribute, value]) => accu += attribute + '="'+value+'" ', '')
@@ -223,7 +224,7 @@ class QuickModal{
 						`));
 						break;
 					default:
-						this._elements.body.append(this._toNodes(`
+						this._elements.body.append(...this._toNodes(`
 							${lineAttributes.includes('inputType') && line.inputType == 'hidden' ? '' : '<p>'}
 								${lineAttributes.includes('label') ? `
 									<label for="${lineAttributes.includes('id') ? line.id : line.name}">${line.label}</label>
