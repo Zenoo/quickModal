@@ -209,7 +209,7 @@ class QuickModal{
 										: ''
 									}
 								>
-									${line.options.reduce((acc, option) => `
+									${line.options.reduce((acc, option) => acc += `
 										<option 
 											${Reflect.ownKeys(option).includes('attributes')
 												? Object.entries(option.attributes).reduce((accu, [attribute, value]) => accu += attribute + '="'+value+'" ', '')
