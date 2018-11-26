@@ -201,7 +201,7 @@ class QuickModal{
 									<label for="${lineAttributes.includes('id') ? line.id : line.name}">${line.label}</label>
 								` : ''}
 								<${line.tag} 
-									name="${line.tag}" 
+									name="${lineAttributes.includes('name') ? line.name : ''}" 
 									id="${lineAttributes.includes('id') ? line.id : line.name}"
 									class="${lineAttributes.includes('classes') ? line.classes.join(' ') : ''}"
 									${lineAttributes.includes('attributes')
