@@ -233,7 +233,7 @@ class QuickModal{
 								` : ''}
 								<${line.tag} 
 									${line.tag == 'textarea' ? '' : lineAttributes.includes('inputType') ? 'type="'+line.inputType+'"' : ''}
-									name="${line.tag}" 
+									name="${lineAttributes.includes('name') ? line.name : ''}" 
 									id="${lineAttributes.includes('id') ? line.id : line.name}"
 									class="${lineAttributes.includes('classes') ? line.classes.join(' ') : ''}"
 									${lineAttributes.includes('attributes')
