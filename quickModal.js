@@ -8,7 +8,7 @@ class QuickModal{
 	 * Creates an instance of QuickModal
 	 * @param {Object|String} 			parameters 							Parameters holder. Use a String if you want a quick initialization
 	 * @param {Boolean} 				[parameters.darkenBackground=true] 	Should the QuickModal darken the background when shown?
-     * @param {Boolean} 				[parameters.isForm=false] 			Is the QuickModal a form?
+     * @param {Boolean} 				[parameters.isForm=true] 			Is the QuickModal a form?
      * @param {String} 					[parameters.closeText=OK] 			Close button text
      * @param {String[]} 				[parameters.classes] 				QuickModal classes
      * @param {Object<String, String>} 	[parameters.attributes] 			QuickModal attributes
@@ -27,7 +27,7 @@ class QuickModal{
 		 */
 		this._parameters = {
 			darkenBackground: true,
-			isForm: false,
+			isForm: true,
 			closeText: 'OK',
 			classes: [],
 			attributes: {},

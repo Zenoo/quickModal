@@ -28,7 +28,7 @@ $(document).quickModal(options);
 ```
 {
   darkenBackground: true,           // Darken your page background when the modal is active
-  isForm: false,                    // Your modal contains a form
+  isForm: true,                     // Your modal contains a form
   closeText: 'OK',                  // Close button text
   classes: [],                      // Your modal classes (String[])
   attributes: {                     // Your modal additional attributes (attribute name : attribute value)
