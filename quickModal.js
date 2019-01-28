@@ -109,7 +109,7 @@ class QuickModal{
 			document.body.appendChild(this._elements.hider);
 		}
 
-		this._buildBody();
+		this._buildBody(this._elements.body, this._parameters.body);
 
 		this._buildFooter();
 
@@ -172,10 +172,12 @@ class QuickModal{
 
 	/**
 	 * Build the QuickModal body
+	 * @param {Element} parent    Parent element
+	 * @param {Object[]} children Children objects to build & append to the parent
 	 * @private
 	 */
-	_buildBody(){
-		this._parameters.body.forEach(line => {
+	_buildBody(parent, children){
+		children.forEach(line => {
 			const lineAttributes = Reflect.ownKeys(line);
 
 			if(line.type == 'text'){
@@ -191,11 +193,11 @@ class QuickModal{
 					});
 				}
 
-				this._elements.body.appendChild(element);
+				parent.appendChild(element);
 			}else if(line.type == 'form'){
 				switch (line.tag) {
 					case 'select':
-						this._elements.body.append(...this._toNodes(`
+						parent.append(...this._toNodes(`
 							<p>
 								${lineAttributes.includes('label') ? `
 									<label for="${lineAttributes.includes('id') ? line.id : line.name}">${line.label}</label>
@@ -226,7 +228,7 @@ class QuickModal{
 						`));
 						break;
 					default:
-						this._elements.body.append(...this._toNodes(`
+						parent.append(...this._toNodes(`
 							${lineAttributes.includes('inputType') && line.inputType == 'hidden' ? '' : '<p>'}
 								${lineAttributes.includes('label') ? `
 									<label for="${lineAttributes.includes('id') ? line.id : line.name}">${line.label}</label>
@@ -252,6 +254,11 @@ class QuickModal{
 			}else{
 				console.warn(line);
 				console.warn('QuickModal: The above element has an invalid `type` attribute. It has been ignored.');
+			}
+
+			// Display recursive children
+			if(line.children){
+				this._buildBody(this._elements.body.lastChild, line.children);
 			}
 		});
 	}

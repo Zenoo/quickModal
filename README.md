@@ -54,7 +54,23 @@ $(document).quickModal(options);
       ],
       attributes: {                 // Your line additionnal attributes
         'data-modal': 'true'
-      }
+      },
+	  children: [                   // List of children elements
+        {
+          type: 'text',
+          text: 'I am Text !',
+          tag: 'h3',
+          id: 'myId',
+          classes: [
+            'class1',
+            'class2'
+          ],
+          attributes: {
+            'data-modal': 'true'
+          },
+	      children: [ ... ]
+        }
+	  ]
     },
     {
       type: 'form',                 // Possible values ["text","form"] If set to 'form', create a new HTML Node with a label and your tag.
