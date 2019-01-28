@@ -177,9 +177,6 @@ class QuickModal{
 	 * @private
 	 */
 	_buildBody(parent, children){
-		console.log('--------');
-		console.log(parent);
-		console.log(children);
 		children.forEach(line => {
 			const lineAttributes = Reflect.ownKeys(line);
 
@@ -261,7 +258,7 @@ class QuickModal{
 
 			// Display recursive children
 			if(line.children){
-				this._buildBody(this._elements.body.lastElementChild, line.children);
+				this._buildBody(parent.lastElementChild, line.children);
 			}
 		});
 	}
