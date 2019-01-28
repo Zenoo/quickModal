@@ -177,6 +177,9 @@ class QuickModal{
 	 * @private
 	 */
 	_buildBody(parent, children){
+		console.log('--------');
+		console.log(parent);
+		console.log(children);
 		children.forEach(line => {
 			const lineAttributes = Reflect.ownKeys(line);
 
