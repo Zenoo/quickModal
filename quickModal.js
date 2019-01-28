@@ -258,7 +258,7 @@ class QuickModal{
 
 			// Display recursive children
 			if(line.children){
-				this._buildBody(this._elements.body.lastChild, line.children);
+				this._buildBody(this._elements.body.lastElementChild, line.children);
 			}
 		});
 	}
