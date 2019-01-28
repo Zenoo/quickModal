@@ -244,9 +244,7 @@ class QuickModal{
 									}
 									placeholder="${lineAttributes.includes('placeholder') ? line.placeholder : ''}"
 									value="${lineAttributes.includes('value') ? line.value : ''}"
-								>
-									
-								</${line.tag}>
+								></${line.tag}>
 							${lineAttributes.includes('inputType') && line.inputType == 'hidden' ? '' : '</p>'}
 						`));
 						break;
