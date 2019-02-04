@@ -3,10 +3,10 @@
   "title": "Quick Modal Generator",
   "description": "Generate a custom modal quickly",
   "files": [
-	  "quickModal.css",
-	  "quickModal.min.css",
-	  "quickModal.js",
-	  "quickModal.min.js"
+    "quickModal.css",
+    "quickModal.min.css",
+    "quickModal.js",
+    "quickModal.min.js"
   ],
   "keywords": [
     "jquery-plugins",
@@ -15,7 +15,7 @@
     "modal",
     "generator"
   ],
-  "version": "2.1.3",
+  "version": "2.1.4",
   "author": {
     "name": "Zenoo",
     "url": "https://github.com/Zenoo"
