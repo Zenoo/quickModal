@@ -2,6 +2,12 @@
   "name": "quick-modal",
   "title": "Quick Modal Generator",
   "description": "Generate a custom modal quickly",
+  "files": [
+	  "quickModal.css",
+	  "quickModal.min.css",
+	  "quickModal.js",
+	  "quickModal.min.js"
+  ],
   "keywords": [
     "jquery-plugins",
     "jquery-plugin",
