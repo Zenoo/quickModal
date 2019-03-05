@@ -27,6 +27,7 @@ $(document).quickModal(options);
 * **Options**
 ```
 {
+  document: window.document,        // Document in which the QuickModal should be opened into, window.document is used by default
   darkenBackground: true,           // Darken your page background when the modal is active
   isForm: true,                     // Your modal contains a form
   closeText: 'OK',                  // Close button text

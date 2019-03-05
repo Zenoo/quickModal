@@ -6,19 +6,20 @@
 class QuickModal{
 	/**
 	 * Creates an instance of QuickModal
-	 * @param {Object|String} 			parameters 							Parameters holder. Use a String if you want a quick initialization
-	 * @param {Boolean} 				[parameters.darkenBackground=true] 	Should the QuickModal darken the background when shown?
-     * @param {Boolean} 				[parameters.isForm=true] 			Is the QuickModal a form?
-     * @param {String} 					[parameters.closeText=OK] 			Close button text
-     * @param {String[]} 				[parameters.classes] 				QuickModal classes
-     * @param {Object<String, String>} 	[parameters.attributes] 			QuickModal attributes
-     * @param {String} 					parameters.header 					Header content
-     * @param {Object[]} 				parameters.body 					Body content
-     * @param {Object[]} 				parameters.footer 					Footer content
-     * @param {Function} 				[parameters.afterOpen] 				Callback called after the QuickModal gets displayed
-     * @param {Function} 				[parameters.beforeClose] 			Callback called before the QuickModal closes
-     * @param {Function} 				[parameters.onSubmit] 				Callback called when the QuickModal form gets submitted
-	 * @param {String} 					[body] 								Body content if you want a quick initialization
+	 * @param {Object|String}           parameters                         Parameters holder. Use a String if you want a quick initialization
+	 * @param {Boolean}                 [parameters.darkenBackground=true] Should the QuickModal darken the background when shown?
+     * @param {Boolean}                 [parameters.isForm=true]           Is the QuickModal a form?
+     * @param {String}                  [parameters.closeText=OK]          Close button text
+     * @param {String[]}                [parameters.classes]               QuickModal classes
+     * @param {Object<String, String>}  [parameters.attributes]            QuickModal attributes
+     * @param {String}                  parameters.header                  Header content
+     * @param {Object[]}                parameters.body                    Body content
+     * @param {Object[]}                parameters.footer                  Footer content
+     * @param {Document}                [parameters.document]              Document in which the QuickModal should be opened into, window.document is used by default
+     * @param {Function}                [parameters.afterOpen]             Callback called after the QuickModal gets displayed
+     * @param {Function}                [parameters.beforeClose]           Callback called before the QuickModal closes
+     * @param {Function}                [parameters.onSubmit]              Callback called when the QuickModal form gets submitted
+	 * @param {String}                  [body]                             Body content if you want a quick initialization
 	 */
 	constructor(parameters, body){
 		/**
@@ -41,6 +42,7 @@ class QuickModal{
 				}
 			],
 			footer: [],
+			document: window.document,
 			afterOpen: () => {},
 			beforeClose: () => {},
 			onSubmit: () => {}
@@ -72,7 +74,7 @@ class QuickModal{
 		 * This ID is unique at the time it's accessed
 		 */
 		this.id = 0;
-		while(document.getElementById('quick-modal-' + this.id)) this.id++;
+		while(this._parameters.document.getElementById('quick-modal-' + this.id)) this.id++;
 		
 		/**
 		 * QuickModal elements holder
@@ -102,18 +104,18 @@ class QuickModal{
 
 		// Hider
 		if(this._parameters.darkenBackground){
-			this._elements.hider = document.createElement('div');
+			this._elements.hider = this._parameters.document.createElement('div');
 			this._elements.hider.id = 'quick-modal-hider-' + this.id;
 			this._elements.hider.classList.add('quick-modal-hider');
 
-			document.body.appendChild(this._elements.hider);
+			this._parameters.document.body.appendChild(this._elements.hider);
 		}
 
 		this._buildBody(this._elements.body, this._parameters.body);
 
 		this._buildFooter();
 
-		document.body.append(this.modal);
+		this._parameters.document.body.append(this.modal);
 	}
 
 	/**
@@ -122,7 +124,7 @@ class QuickModal{
 	 */
 	_buildFrame(){
 		// QuickModal wrapper
-		this.modal = document.createElement('section');
+		this.modal = this._parameters.document.createElement('section');
 		this.modal.id = 'quick-modal-' + this.id;
 		this.modal.classList.add('quick-modal', ...this._parameters.classes);
 		Object.entries(this._parameters.attributes).forEach(([attribute, value]) => {
@@ -182,7 +184,7 @@ class QuickModal{
 
 			if(line.type == 'text'){
 				/** @const {Element} */
-				const element = document.createElement(line.tag);
+				const element = this._parameters.document.createElement(line.tag);
 
 				element.innerHTML = line.text;
 				if(lineAttributes.includes('id')) element.id = line.id;
@@ -321,7 +323,7 @@ class QuickModal{
 	 * @private
 	 */
 	_toNodes(html){
-		const template = document.createElement('template');
+		const template = this._parameters.document.createElement('template');
 
 		template.innerHTML = html;
 
