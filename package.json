@@ -2,6 +2,9 @@
   "name": "quick-modal",
   "title": "Quick Modal Generator",
   "description": "Generate a custom modal quickly",
+  "scripts": {
+	"preversion": "jsdoc . -R README.md -c docs/jsdoc-conf.json && git add * || true"
+  },
   "files": [
     "quickModal.css",
     "quickModal.min.css",
