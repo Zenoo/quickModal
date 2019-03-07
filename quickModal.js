@@ -9,6 +9,12 @@ class QuickModal{
 	 * @param {Object|String}           parameters                         Parameters holder. Use a String if you want a quick initialization
 	 * @param {Boolean}                 [parameters.darkenBackground=true] Should the QuickModal darken the background when shown?
      * @param {Boolean}                 [parameters.isForm=true]           Is the QuickModal a form?
+     * @param {Object}                  [parameters.form]                  Form properties holder
+     * @param {String}                  [parameters.form.action]           Form URL
+     * @param {String}                  [parameters.form.method]           Form METHOD attribute (GET/POST/...)
+     * @param {String}                  [parameters.form.id]               Form ID
+     * @param {String[]}                [parameters.form.classes]          Form classes
+     * @param {String}                  [parameters.form.submit]           Form submit button text
      * @param {String}                  [parameters.closeText=OK]          Close button text
      * @param {String[]}                [parameters.classes]               QuickModal classes
      * @param {Object<String, String>}  [parameters.attributes]            QuickModal attributes
@@ -29,6 +35,13 @@ class QuickModal{
 		this._parameters = {
 			darkenBackground: true,
 			isForm: true,
+			form: {
+				action: 'path/to/your/form',
+				method: 'POST',
+				id: 'formId',
+				classes: [],
+				submit: 'OK'
+			},
 			closeText: 'OK',
 			classes: [],
 			attributes: {},
