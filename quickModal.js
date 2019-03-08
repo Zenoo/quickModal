@@ -65,6 +65,7 @@ class QuickModal{
 		if(typeof parameters == 'string'){
 			this._parameters = {
 				...this._parameters,
+				isForm: false,
 				header: '<div>' + parameters + '</div>',
 				body: [
 					{
