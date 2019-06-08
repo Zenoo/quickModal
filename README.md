@@ -8,8 +8,8 @@ Create a custom modal quickly.
 
 Simply import QuickModal into your HTML.
 ```
-<link rel="stylesheet" type="text/css" href="https://gitcdn.link/repo/Zenoo/quickModal/master/quickModal.min.css">
-<script src="https://gitcdn.link/repo/Zenoo/quickModal/master/quickModal.min.js"></script>	
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/quick-modal@2.2.2/quickModal.min.css">
+<script src="https://unpkg.com/quick-modal@2.2.2/quickModal.min.js"></script>	
 ```
 * **How to use**
 
