@@ -5,6 +5,7 @@
   "scripts": {
     "preversion": "jsdoc . -R README.md -c docs/jsdoc-conf.json && git add * || true"
   },
+  "main": "quickModal.js",
   "files": [
     "quickModal.css",
     "quickModal.min.css",
@@ -39,7 +40,5 @@
   "homepage": "https://github.com/Zenoo/quickModal",
   "docs": "https://github.com/Zenoo/quickModal#readme",
   "download": "https://github.com/Zenoo/quickModal/archive/master.zip",
-  "dependencies": {
-    "jquery": "^3.3.1"
-  }
+  "dependencies": {}
 }
