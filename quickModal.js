@@ -316,7 +316,7 @@ class QuickModal{
 				this.close();
 			}else{
 				this.destroy();
-			} 
+			}
 		};
 
 		this._elements.hider.addEventListener('click', closingHandler);
@@ -356,8 +356,13 @@ class QuickModal{
 	 */
 	open(){
 		setTimeout(() => {
+			this.modal.classList.remove('done');
 			this.modal.classList.add('active');
-			if(this._parameters.darkenBackground) this._elements.hider.classList.add('active');
+
+			if(this._parameters.darkenBackground){
+				this._elements.hider.classList.remove('done');
+				this._elements.hider.classList.add('active');
+			}
 
 			// Callback afterOpen
 			Reflect.apply(this._parameters.afterOpen, this, [this.modal]);
@@ -383,6 +388,8 @@ class QuickModal{
 
 		return new Promise(resolve => {
 			setTimeout(() => {
+				this.modal.classList.add('done');
+				if(this._parameters.darkenBackground) this._elements.hider.classList.add('done');
 				resolve();
 			}, 500);
 		});
