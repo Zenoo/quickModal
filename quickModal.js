@@ -9,7 +9,7 @@ class QuickModal{
 	 * @param {Object|String}           parameters                         Parameters holder. Use a String if you want a quick initialization
 	 * @param {Boolean}                 [parameters.darkenBackground=true] Should the QuickModal darken the background when shown?
      * @param {Boolean}                 [parameters.isForm=true]           Is the QuickModal a form?
-     * @param {Boolean}                 [parameters.keepHiden=false]       Keep the modal hidden instead of destroying it
+     * @param {Boolean}                 [parameters.keepHidden=false]      Keep the modal hidden instead of destroying it
      * @param {Object}                  [parameters.form]                  Form properties holder
      * @param {String}                  [parameters.form.action]           Form URL
      * @param {String}                  [parameters.form.method]           Form METHOD attribute (GET/POST/...)
@@ -36,7 +36,7 @@ class QuickModal{
 		this._parameters = {
 			darkenBackground: true,
 			isForm: true,
-			keepHiden: false,
+			keepHidden: false,
 			form: {
 				action: 'path/to/your/form',
 				method: 'POST',
@@ -312,7 +312,7 @@ class QuickModal{
 		// Close action handling
 		const closingHandler = e => {
 			e.preventDefault();
-			if(!this._parameters.keepHiden) this.destroy();
+			if(!this._parameters.keepHidden) this.destroy();
 		};
 
 		this._elements.hider.addEventListener('click', closingHandler);

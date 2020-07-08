@@ -30,7 +30,7 @@ $(document).quickModal(options);
   document: window.document,        // Document in which the QuickModal should be opened into, window.document is used by default
   darkenBackground: true,           // Darken your page background when the modal is active
   isForm: true,                     // Your modal contains a form
-  keepHiden: false,                 // Hide the modal instead of destroying it on close
+  keepHidden: false,                // Hide the modal instead of destroying it on close
   closeText: 'OK',                  // Close button text
   classes: [],                      // Your modal classes (String[])
   attributes: {                     // Your modal additional attributes (attribute name : attribute value)
