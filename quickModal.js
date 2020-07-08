@@ -312,7 +312,11 @@ class QuickModal{
 		// Close action handling
 		const closingHandler = e => {
 			e.preventDefault();
-			if(!this._parameters.keepHidden) this.destroy();
+			if(this._parameters.keepHidden){
+				this.close();
+			}else{
+				this.destroy();
+			} 
 		};
 
 		this._elements.hider.addEventListener('click', closingHandler);
