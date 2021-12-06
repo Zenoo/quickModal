@@ -425,29 +425,31 @@ class QuickModal{
 	}
 }
 
-// Equivalent jQuery plugin
-(function($){
-	'use strict';
-
-    $.fn.extend({
-        quickModal(parameters) {
-			console.warn('QuickModal: Using `$(...).quickModal(...)` is deprecated. Use `const modal = new QuickModal(...)` instead.');
-
-			const modal = new QuickModal(parameters);
-
-			this.open = () => {
-				modal.open();
-			};
-
-			this.close = () => {
-				modal.close();
-			};
-
-			this.destroy = () => {
-				modal.destroy();
-			};
-			
-			return this;
-		}
-    });
-}(jQuery));
+if(window.jQuery){
+	// Equivalent jQuery plugin
+	(function($){
+		'use strict';
+	
+			$.fn.extend({
+					quickModal(parameters) {
+				console.warn('QuickModal: Using `$(...).quickModal(...)` is deprecated. Use `const modal = new QuickModal(...)` instead.');
+	
+				const modal = new QuickModal(parameters);
+	
+				this.open = () => {
+					modal.open();
+				};
+	
+				this.close = () => {
+					modal.close();
+				};
+	
+				this.destroy = () => {
+					modal.destroy();
+				};
+				
+				return this;
+			}
+			});
+	}(jQuery));
+}
