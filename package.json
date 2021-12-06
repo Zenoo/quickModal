@@ -40,5 +40,7 @@
   "homepage": "https://github.com/Zenoo/quickModal",
   "docs": "https://github.com/Zenoo/quickModal#readme",
   "download": "https://github.com/Zenoo/quickModal/archive/master.zip",
-  "dependencies": {}
+  "devDependencies": {
+    "standard-version": "^9.3.2"
+  }
 }

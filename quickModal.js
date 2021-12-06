@@ -319,7 +319,7 @@ class QuickModal{
 			}
 		};
 
-		this._elements.hider.addEventListener('click', closingHandler);
+		if(this._parameters.darkenBackground) this._elements.hider.addEventListener('click', closingHandler);
 
 		this.modal.querySelectorAll('.quick-modal-close').forEach(button => {
 			button.addEventListener('click', closingHandler);
