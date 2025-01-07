@@ -3,8 +3,7 @@
   "title": "Quick Modal Generator",
   "description": "Generate a custom modal quickly",
   "scripts": {
-    "preversion": "jsdoc . -R README.md -c docs/jsdoc-conf.json && git add docs && git diff --quiet && git diff --staged --quiet || git commit -am \"chore: Docs\"",
-    "release": "standard-version"
+    "generate-docs": "jsdoc . -R README.md -c docs/jsdoc-conf.json && git add docs && git diff --quiet && git diff --staged --quiet || git commit -am \"chore: Docs\""
   },
   "main": "quickModal.js",
   "files": [
@@ -42,12 +41,6 @@
   "docs": "https://github.com/Zenoo/quickModal#readme",
   "download": "https://github.com/Zenoo/quickModal/archive/master.zip",
   "devDependencies": {
-    "jsdoc": "^3.6.7",
-    "standard-version": "^9.3.2"
-  },
-  "standard-version": {
-    "scripts": {
-      "prerelease": "npm run preversion"
-    }
+    "jsdoc": "^4.0.4"
   }
 }
