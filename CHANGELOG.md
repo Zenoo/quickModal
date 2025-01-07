@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.3.7](https://github.com/Zenoo/quickModal/compare/v2.3.6...v2.3.7) (2025-01-07)
+
+
+### Bug Fixes
+
+* Auto publish on release ([12888ba](https://github.com/Zenoo/quickModal/commit/12888bac95ae67965b22ca895f04a14f73c1e445))
+
 ### [2.3.6](https://github.com/Zenoo/quickModal/compare/v2.3.5...v2.3.6) (2021-12-06)
 
 
